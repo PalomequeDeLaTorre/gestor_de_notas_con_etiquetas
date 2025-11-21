@@ -17,12 +17,12 @@ export default function Home() {
   const [error, setError] = useState(""); 
   const [viewArchived, setViewArchived] = useState(false); 
 
-  // Crear nota
+  // CREAR NOTA
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
 
-  // Editar nota
+  // EDITAR NOTA
   const [editingNote, setEditingNote] = useState<Note | null>(null);
   const [editTitle, setEditTitle] = useState("");
   const [editContent, setEditContent] = useState("");
@@ -161,7 +161,7 @@ export default function Home() {
     fetchNotes();
   }, []);
 
-  // Filtrar notas según la vista actual (Activas vs Archivadas)
+  // FILTRAR NOTAS SEGÚN LA VISTA ACTUAL (ACTIVAS VS ARCHIVADAS)
   const filteredNotes = notes.filter((note) => 
     viewArchived ? note.archived === true : !note.archived
   );
@@ -192,7 +192,7 @@ export default function Home() {
                 onKeyDown={handleKeyDown} 
             />
             
-            {/* BOTÓN DE BÚSQUEDA (LUPA) */}
+            {/* BOTÓN DE BÚSQUEDA */}
             <button 
                 onClick={executeSearch}
                 className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors"
@@ -212,7 +212,7 @@ export default function Home() {
           )}
         </div>
 
-        {/*CREAR NOTA*/}
+        {/* CREAR NOTA */}
         {!viewArchived && (
           <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-4 sm:p-6 space-y-4">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-800 flex items-center gap-2">
@@ -314,7 +314,7 @@ export default function Home() {
                 </p>
 
                 
-                {}
+                { /* ETIQUETAS */ }
                 <div className="flex gap-2 flex-wrap mb-4">
                   {note.tags.map((t, index) => (
                     <span 
