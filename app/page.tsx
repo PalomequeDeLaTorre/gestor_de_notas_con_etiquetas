@@ -102,7 +102,6 @@ export default function Home() {
   };
 
   // EDITAR NOTA
-
   const openEdit = (note: Note) => {
     setError(""); 
     setEditingNote(note);
