@@ -8,6 +8,8 @@ interface Note {
   content: string;
   tags: string[];
   archived?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export default function Home() {
@@ -66,7 +68,7 @@ export default function Home() {
         title,
         content,
         tags: tags.split(",").map((t) => t.trim()),
-        archived: false, 
+        archived: false,
       }),
     });
 
@@ -312,6 +314,33 @@ export default function Home() {
                   {note.content}
                 </p>
 
+                {/* FECHAS DE CREACIÓN Y ACTUALIZACIÓN */}
+                <div className="text-xs text-slate-500 mb-3 space-y-1 border-t border-slate-100 pt-3">
+                  {note.createdAt && (
+                    <div className="flex items-center gap-2">
+                      <span>📅 Creada:</span>
+                      <span className="font-medium">{new Date(note.createdAt).toLocaleString('es-MX', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}</span>
+                    </div>
+                  )}
+                  {note.updatedAt && note.updatedAt !== note.createdAt && (
+                    <div className="flex items-center gap-2">
+                      <span>✏️ Actualizada:</span>
+                      <span className="font-medium">{new Date(note.updatedAt).toLocaleString('es-MX', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}</span>
+                    </div>
+                  )}
+                </div>
                 
                 { /* ETIQUETAS */ }
                 <div className="flex gap-2 flex-wrap mb-4">
