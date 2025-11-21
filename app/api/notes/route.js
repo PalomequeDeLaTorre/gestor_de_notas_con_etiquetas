@@ -2,7 +2,6 @@ import Note from "@/models/Note";
 import connectDB from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
-// Esta línea arregla el problema de Vercel (cache)
 export const dynamic = "force-dynamic";
 
 export async function GET() {
@@ -11,7 +10,6 @@ export async function GET() {
   return NextResponse.json(notes);
 }
 
-// 👇 NOTA: He quitado ": Request". Ahora es JavaScript puro y válido.
 export async function POST(req) {
   await connectDB();
   const data = await req.json();
