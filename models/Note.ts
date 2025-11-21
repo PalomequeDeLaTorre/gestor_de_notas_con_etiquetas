@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
+import 'dotenv/config';
 
 export interface INote extends Document {
   title: string;
